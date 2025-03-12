@@ -1,7 +1,7 @@
-package com.example.checkoutbackend.service;
+package com.online.checkoutbackend.service;
 
-import com.example.checkoutbackend.model.CartItem;
-import com.example.checkoutbackend.repository.CartItemRepository;
+import com.online.checkoutbackend.model.CartItem;
+import com.online.checkoutbackend.repository.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

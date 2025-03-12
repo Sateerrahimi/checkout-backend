@@ -1,4 +1,4 @@
-package com.example.checkoutbackend;
+package com.online.checkoutbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

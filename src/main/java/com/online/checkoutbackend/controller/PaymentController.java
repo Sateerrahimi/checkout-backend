@@ -1,6 +1,6 @@
-package com.example.checkoutbackend.controller;
-import com.example.checkoutbackend.model.CartItem;
-import com.example.checkoutbackend.service.PaymentService;
+package com.online.checkoutbackend.controller;
+import com.online.checkoutbackend.model.CartItem;
+import com.online.checkoutbackend.service.PaymentService;
 import com.stripe.exception.StripeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

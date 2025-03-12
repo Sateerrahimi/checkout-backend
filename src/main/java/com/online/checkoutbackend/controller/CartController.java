@@ -1,7 +1,7 @@
-package com.example.checkoutbackend.controller;
+package com.online.checkoutbackend.controller;
 
-import com.example.checkoutbackend.model.CartItem;
-import com.example.checkoutbackend.service.CartService;
+import com.online.checkoutbackend.model.CartItem;
+import com.online.checkoutbackend.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

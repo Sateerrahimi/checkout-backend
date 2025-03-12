@@ -1,5 +1,5 @@
-package com.example.checkoutbackend.service;
-import com.example.checkoutbackend.model.CartItem;
+package com.online.checkoutbackend.service;
+import com.online.checkoutbackend.model.CartItem;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;

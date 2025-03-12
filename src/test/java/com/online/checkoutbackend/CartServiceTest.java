@@ -1,11 +1,11 @@
-package com.example.checkoutbackend;
+package com.online.checkoutbackend;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.checkoutbackend.model.CartItem;
-import com.example.checkoutbackend.repository.CartItemRepository;
-import com.example.checkoutbackend.service.CartService;
+import com.online.checkoutbackend.model.CartItem;
+import com.online.checkoutbackend.repository.CartItemRepository;
+import com.online.checkoutbackend.service.CartService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+
 
 @ExtendWith(MockitoExtension.class)
 public class CartServiceTest {
@@ -24,7 +24,7 @@ public class CartServiceTest {
     @Mock
     private CartItemRepository cartItemRepository;
     @InjectMocks
-    private CartService cartService;
+    private CartService        cartService;
 
     @BeforeEach
     void setUp() {

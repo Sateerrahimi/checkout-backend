@@ -1,10 +1,10 @@
-package com.example.checkoutbackend;
+package com.online.checkoutbackend;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.checkoutbackend.model.CartItem;
-import com.example.checkoutbackend.service.PaymentService;
+import com.online.checkoutbackend.model.CartItem;
+import com.online.checkoutbackend.service.PaymentService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;

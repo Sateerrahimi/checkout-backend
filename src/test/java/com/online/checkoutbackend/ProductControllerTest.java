@@ -1,15 +1,13 @@
-package com.example.checkoutbackend;
+package com.online.checkoutbackend;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.example.checkoutbackend.controller.ProductController;
-import com.example.checkoutbackend.model.Product;
-import com.example.checkoutbackend.service.ProductService;
+import com.online.checkoutbackend.controller.ProductController;
+import com.online.checkoutbackend.model.Product;
+import com.online.checkoutbackend.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

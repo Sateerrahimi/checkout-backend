@@ -1,4 +1,4 @@
-package com.example.checkoutbackend.model;
+package com.online.checkoutbackend.model;
 
 import jakarta.persistence.*;
 

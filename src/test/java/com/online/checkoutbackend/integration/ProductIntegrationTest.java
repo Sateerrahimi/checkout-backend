@@ -1,6 +1,6 @@
-    package com.example.checkoutbackend.integration;
+    package com.online.checkoutbackend.integration;
 
-    import com.example.checkoutbackend.model.Product;
+    import com.online.checkoutbackend.model.Product;
     import com.fasterxml.jackson.databind.ObjectMapper;
     import org.junit.jupiter.api.BeforeEach;
     import org.junit.jupiter.api.Test;

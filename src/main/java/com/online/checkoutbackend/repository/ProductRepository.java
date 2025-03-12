@@ -1,6 +1,6 @@
-package com.example.checkoutbackend.repository;
+package com.online.checkoutbackend.repository;
 
-import com.example.checkoutbackend.model.Product;
+import com.online.checkoutbackend.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

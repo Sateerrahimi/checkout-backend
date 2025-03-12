@@ -1,8 +1,8 @@
-package com.example.checkoutbackend;
+package com.online.checkoutbackend;
 
-import com.example.checkoutbackend.controller.PaymentController;
-import com.example.checkoutbackend.model.CartItem;
-import com.example.checkoutbackend.service.PaymentService;
+import com.online.checkoutbackend.controller.PaymentController;
+import com.online.checkoutbackend.model.CartItem;
+import com.online.checkoutbackend.service.PaymentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

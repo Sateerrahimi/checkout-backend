@@ -1,5 +1,5 @@
-package com.example.checkoutbackend.repository;
-import com.example.checkoutbackend.model.CartItem;
+package com.online.checkoutbackend.repository;
+import com.online.checkoutbackend.model.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

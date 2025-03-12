@@ -1,11 +1,11 @@
-package com.example.checkoutbackend;
+package com.online.checkoutbackend;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.checkoutbackend.model.Product;
-import com.example.checkoutbackend.repository.ProductRepository;
-import com.example.checkoutbackend.service.ProductService;
+import com.online.checkoutbackend.model.Product;
+import com.online.checkoutbackend.repository.ProductRepository;
+import com.online.checkoutbackend.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
