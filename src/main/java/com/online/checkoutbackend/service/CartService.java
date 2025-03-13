@@ -5,6 +5,8 @@ import com.online.checkoutbackend.repository.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class CartService {
@@ -21,6 +23,13 @@ public class CartService {
     }
 
     public void removeCartItem(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Cart item cannot be null.");
+        }
+        Optional<CartItem> cartItem = cartItemRepository.findById(id);
+        if (cartItem.isEmpty()) {
+            throw new IllegalArgumentException("Cart item with ID " + id + " does not exist.");
+        }
         cartItemRepository.deleteById(id);
     }
 }

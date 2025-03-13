@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.Arrays;
 import java.util.List;
 
+
 @WebMvcTest(CartController.class)
 public class CartControllerTest {
 
@@ -32,10 +33,7 @@ public class CartControllerTest {
     @Test
     void testGetCartItems() throws Exception {
         // Given: A cart with two items
-        List<CartItem> cartItems = Arrays.asList(
-                new CartItem("Shirt", 20.0, 2),
-                new CartItem("Pants", 40.0, 1)
-        );
+        List<CartItem> cartItems = Arrays.asList(new CartItem("Shirt", 20.0, 2), new CartItem("Pants", 40.0, 1));
 
         when(cartService.getAllCartItems()).thenReturn(cartItems);
 
@@ -67,7 +65,8 @@ public class CartControllerTest {
 
     @Test
     void testRemoveCartItem() throws Exception {
-        doNothing().when(cartService).removeCartItem(1L);
+        doNothing().when(cartService)
+                   .removeCartItem(1L);
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/cart/1")
                                               .contentType(MediaType.APPLICATION_JSON))

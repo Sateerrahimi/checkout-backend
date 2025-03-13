@@ -4,9 +4,6 @@ import com.online.checkoutbackend.model.Product;
 import com.online.checkoutbackend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +36,6 @@ public class ProductController {
     public void decreaseStock(@PathVariable Long id, @PathVariable int quantity) {
         productService.decreaseStock(id, quantity);
     }
-    // ✅ New API for increasing stock
     @PostMapping("/increase-stock/{id}/{quantity}")
     public void increaseStock(@PathVariable Long id, @PathVariable int quantity) {
         productService.increaseStock(id, quantity);

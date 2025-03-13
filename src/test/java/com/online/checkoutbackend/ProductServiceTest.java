@@ -8,9 +8,11 @@ import com.online.checkoutbackend.repository.ProductRepository;
 import com.online.checkoutbackend.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
 
     @Mock
@@ -81,7 +84,21 @@ public class ProductServiceTest {
         assertEquals(120.0, result.getPrice());
         assertEquals(2, result.getStock());
     }
+    @Test
+    void testIncreaseStock_Success() {
+        // Given: A product with stock of 5
+        Product product = new Product("Laptop", 1500.0, 5);
+        product.setId(1L);
 
+        when(productRepository.findById(1L)).thenReturn(Optional.of(product));
+
+        // When: We increase the stock by 3
+        productService.increaseStock(1L, 3);
+
+        // Then: The stock should be 8
+        assertEquals(8, product.getStock());
+        verify(productRepository, times(1)).save(product);
+    }
     @Test
     void testDecreaseStock_Success() {
         // Given: A product with stock of 10

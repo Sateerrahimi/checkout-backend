@@ -1,5 +1,6 @@
 package com.online.checkoutbackend.service;
 
+import com.online.checkoutbackend.model.CartItem;
 import com.online.checkoutbackend.model.Product;
 import com.online.checkoutbackend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,13 @@ public class ProductService {
         return productRepository.save(existingProduct);
     }
     public void removeProduct(Long id) {
-        productRepository.deleteById(id);
-    }
+        if (id == null) {
+            throw new IllegalArgumentException("Product cannot be null.");
+        }
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isEmpty()) {
+            throw new IllegalArgumentException("Product with ID " + id + " does not exist.");
+        }
+        productRepository.deleteById(id);    }
 
 }
