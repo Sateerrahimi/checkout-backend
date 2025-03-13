@@ -62,11 +62,9 @@ public class PaymentIntegrationTest {
 
     @Test
     void testCreateCheckoutSession_Success() throws Exception {
-        // When: Sending a POST request
         mockMvc.perform(MockMvcRequestBuilders.post("/api/payment/create-checkout-session")
                                               .contentType(MediaType.APPLICATION_JSON)
                                               .content(objectMapper.writeValueAsString(cartItems)))
-               // Then: Expect a 200 OK status
                .andExpect(status().isOk())
                .andExpect(jsonPath("$.url").isNotEmpty());
     }

@@ -18,13 +18,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.Arrays;
 import java.util.List;
 
-@WebMvcTest(ProductController.class) //  Load ONLY ProductController
+@WebMvcTest(ProductController.class)
 public class ProductControllerTest {
 
     @Autowired
-    private MockMvc mockMvc; // Fake HTTP client for testing API
+    private MockMvc mockMvc;
 
-    @MockBean // Replace the actual ProductService with a mock version
+    @MockBean
     private ProductService productService;
 
     private final ObjectMapper objectMapper = new ObjectMapper();

@@ -22,12 +22,12 @@ import java.util.List;
 public class CartControllerTest {
 
     @Autowired
-    private MockMvc mockMvc; // Allows us to send HTTP requests in tests
+    private MockMvc mockMvc;
 
     @MockBean
-    private CartService cartService; // Mock the CartService
+    private CartService cartService;
 
-    private ObjectMapper objectMapper = new ObjectMapper(); // For converting objects to JSON
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
     void testGetCartItems() throws Exception {
@@ -43,9 +43,9 @@ public class CartControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/cart")
                                               .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk()) // Then: Status 200
-               .andExpect(jsonPath("$.size()").value(2)) // Should return 2 items
-               .andExpect(jsonPath("$[0].name").value("Shirt")) // First item is "Shirt"
-               .andExpect(jsonPath("$[1].name").value("Pants")); // Second item is "Pants"
+               .andExpect(jsonPath("$.size()").value(2))
+               .andExpect(jsonPath("$[0].name").value("Shirt"))
+               .andExpect(jsonPath("$[1].name").value("Pants"));
     }
 
     @Test
@@ -60,19 +60,17 @@ public class CartControllerTest {
                                               .contentType(MediaType.APPLICATION_JSON)
                                               .content(objectMapper.writeValueAsString(cartItem)))
                .andExpect(status().isOk()) // Then: Status 200
-               .andExpect(jsonPath("$.name").value("Shoes")) // The item name should be "Shoes"
-               .andExpect(jsonPath("$.price").value(50.0)) // The item price should be 50.0
-               .andExpect(jsonPath("$.quantity").value(1)); // The quantity should be 1
+               .andExpect(jsonPath("$.name").value("Shoes"))
+               .andExpect(jsonPath("$.price").value(50.0))
+               .andExpect(jsonPath("$.quantity").value(1));
     }
 
     @Test
     void testRemoveCartItem() throws Exception {
-        // Given: A cart item with ID 1
         doNothing().when(cartService).removeCartItem(1L);
 
-        // When: Making a DELETE request
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/cart/1")
                                               .contentType(MediaType.APPLICATION_JSON))
-               .andExpect(status().isOk()); // Then: Status 200
+               .andExpect(status().isOk());
     }
 }

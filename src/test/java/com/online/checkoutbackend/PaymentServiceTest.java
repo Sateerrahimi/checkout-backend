@@ -27,7 +27,7 @@ public class PaymentServiceTest {
 
     @BeforeEach
     void setUp() {
-        System.setProperty("stripe.secret.key", "sk_test_123456789"); // Mock Stripe API Key
+        System.setProperty("stripe.secret.key", "sk_test_123456789");
     }
 
     @Test

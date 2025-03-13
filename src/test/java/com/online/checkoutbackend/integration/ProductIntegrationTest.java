@@ -53,7 +53,7 @@
         }
         @Test
         void testDecreaseStock() throws Exception {
-            // Step 1: Add a product with initial stock
+            // Add a product with initial stock
             Product product = new Product("Headphones", 100.0, 10); // Stock: 10
             String response = mockMvc.perform(MockMvcRequestBuilders.post("/api/products")
                                                                     .contentType(MediaType.APPLICATION_JSON)
@@ -64,12 +64,12 @@
             Product savedProduct = objectMapper.readValue(response, Product.class);
             Long productId = savedProduct.getId();
 
-            // Step 2: Decrease stock (valid case: decrease by 3)
+            // Decrease stock (valid case: decrease by 3)
             mockMvc.perform(MockMvcRequestBuilders.post("/api/products/decrease-stock/{id}/{quantity}", productId, 3)
                                                   .contentType(MediaType.APPLICATION_JSON))
                    .andExpect(status().isOk());
 
-            // Step 3: Fetch product and verify stock decreased
+            // Fetch product and verify stock decreased
             String updatedResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/products/" + productId)
                                                                            .contentType(MediaType.APPLICATION_JSON))
                                             .andExpect(status().isOk())
@@ -78,7 +78,7 @@
             Product updatedProduct = objectMapper.readValue(updatedResponse, Product.class);
             assertThat(updatedProduct.getStock()).isEqualTo(7); // 10 - 3 = 7
 
-            // Step 4: Test decreasing stock more than available (should return 400 Bad Request)
+            // Test decreasing stock more than available (should return 400 Bad Request)
             mockMvc.perform(MockMvcRequestBuilders.post("/api/products/decrease-stock/{id}/{quantity}", productId, 8)
                                                   .contentType(MediaType.APPLICATION_JSON))
                    .andExpect(status().isBadRequest())  // ✅ Expecting 400 Bad Request
@@ -90,7 +90,6 @@
 
         @Test
         void testGetAllProducts() throws Exception {
-            // Add products first
             for (Product product : products) {
                 mockMvc.perform(MockMvcRequestBuilders.post("/api/products")
                                                       .contentType(MediaType.APPLICATION_JSON)
@@ -98,7 +97,6 @@
                        .andExpect(status().isOk());
             }
 
-            // Now retrieve all products
             mockMvc.perform(MockMvcRequestBuilders.get("/api/products")
                                                   .contentType(MediaType.APPLICATION_JSON))
                    .andExpect(status().isOk())
@@ -107,7 +105,6 @@
 
         @Test
         void testGetProductById() throws Exception {
-            // Add a product and get its ID
             String response = mockMvc.perform(MockMvcRequestBuilders.post("/api/products")
                                                                     .contentType(MediaType.APPLICATION_JSON)
                                                                     .content(objectMapper.writeValueAsString(products.get(0))))
@@ -116,7 +113,6 @@
 
             Product savedProduct = objectMapper.readValue(response, Product.class);
 
-            // Retrieve product by ID
             mockMvc.perform(MockMvcRequestBuilders.get("/api/products/" + savedProduct.getId())
                                                   .contentType(MediaType.APPLICATION_JSON))
                    .andExpect(status().isOk())
@@ -127,7 +123,6 @@
 
         @Test
         void testUpdateProduct() throws Exception {
-            // Add a product
             String response = mockMvc.perform(MockMvcRequestBuilders.post("/api/products")
                                                                     .contentType(MediaType.APPLICATION_JSON)
                                                                     .content(objectMapper.writeValueAsString(products.get(0))))
@@ -136,7 +131,6 @@
 
             Product savedProduct = objectMapper.readValue(response, Product.class);
 
-            // Update product details
             savedProduct.setPrice(1100.00);
             savedProduct.setStock(8);
 
@@ -150,7 +144,6 @@
 
         @Test
         void testDeleteProduct() throws Exception {
-            // Add a product
             String response = mockMvc.perform(MockMvcRequestBuilders.post("/api/products")
                                                                     .contentType(MediaType.APPLICATION_JSON)
                                                                     .content(objectMapper.writeValueAsString(products.get(0))))
@@ -160,12 +153,10 @@
             Product savedProduct = objectMapper.readValue(response, Product.class);
             Long productID = savedProduct.getId();
 
-            // Delete the product
             mockMvc.perform(MockMvcRequestBuilders.delete("/api/products/" + productID)
                                                   .contentType(MediaType.APPLICATION_JSON))
                    .andExpect(status().isOk());
 
-            // Then: Verify item is removed by checking GET
             mockMvc.perform(MockMvcRequestBuilders.get("/api/products")
                                                   .contentType(MediaType.APPLICATION_JSON))
                    .andExpect(status().isOk())

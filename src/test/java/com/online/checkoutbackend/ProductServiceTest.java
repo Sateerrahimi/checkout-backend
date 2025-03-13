@@ -75,10 +75,8 @@ public class ProductServiceTest {
         when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
         when(productRepository.save(any(Product.class))).thenReturn(updatedProduct);
 
-        // When: We update the product
         Product result = productService.updateProduct(1L, updatedProduct);
 
-        // Then: It should return the updated product
         assertEquals("Jacket", result.getName());
         assertEquals(120.0, result.getPrice());
         assertEquals(2, result.getStock());

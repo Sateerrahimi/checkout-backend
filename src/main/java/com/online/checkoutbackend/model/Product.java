@@ -11,7 +11,7 @@ public class Product {
     private Long id;
     private String name;
     private double price;
-    private int stock; // Represents available stock in inventory
+    private int stock;
 
     public Product() {}
 

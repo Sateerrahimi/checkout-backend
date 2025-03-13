@@ -18,12 +18,6 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    public ProductController(ApplicationContext context) {
-        RequestMappingHandlerMapping mapping = context.getBean(RequestMappingHandlerMapping.class);
-        mapping.getHandlerMethods().forEach((key, value) -> System.out.println(key + " => " + value));
-    }
-
-    @Autowired
     private ProductService productService;
 
     @GetMapping
@@ -48,7 +42,6 @@ public class ProductController {
     // ✅ New API for increasing stock
     @PostMapping("/increase-stock/{id}/{quantity}")
     public void increaseStock(@PathVariable Long id, @PathVariable int quantity) {
-        System.out.println("🔄 Increasing stock for product ID: " + id + ", Quantity: " + quantity);
         productService.increaseStock(id, quantity);
     }
     @PutMapping("/{id}")
